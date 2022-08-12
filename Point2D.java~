@@ -1,0 +1,36 @@
+/** Tyler Youk: 2D Point Class */
+
+public class Point2D {
+  
+  /**instance variabeles */
+  private double x;
+  private double y;
+
+  /**Constructor with @param x and @param y */
+  public Point2D(double x, double y) {
+    this.x = x;
+    this.y = y;}
+  
+  /*Getter methods for instance variables */
+  public double getX(){return x;}
+  public double getY(){return y;}
+  
+  /*Override the toString method*/
+  public String toString() {
+    return String.format("(%.1f,%.1f)", x,y);}
+  
+  /*Override the equals method.*/
+  public boolean equals(Object obj){
+    Point2D temp=(Point2D)obj;
+    return x==temp.getX() &&
+      y==temp.getY();}
+  
+  /*Override the distance method that takes two Point2D objects
+   * and returns the distance value as reurn value*/
+  public static double distance(Point2D p1, Point2D p2){
+    double dis=0;
+    dis=Math.sqrt(Math.pow(p1.getX()-p2.getX(), 2.0)
+                    +Math.pow(p1.getY()-p2.getY(), 2.0));
+    return dis;}
+ 
+} 

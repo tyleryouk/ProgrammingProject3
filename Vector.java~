@@ -1,0 +1,64 @@
+/** Tyler Youk: Vector Class */
+
+public class Vector {
+//member variables denoting the end points in a 3-D plane the vector points to.
+private double x;
+private double y;
+private double z;
+//parameterized constructor.
+Vector(double x, double y, double z)
+{
+this.x = x;
+this.y = y;
+this.z = z;
+}
+//parameterized constructor.
+Vector(Vector direction, double magnitude)
+{
+double a = direction.x/direction.magnitude();
+double b = direction.y/direction.magnitude();
+double c = direction.z/direction.magnitude();
+this.x = a*magnitude;
+this.y = b*magnitude;
+this.z = c*magnitude;
+}
+@Override
+public String toString() {
+return "<" + x + "," + y + "," + z + ">";
+}
+
+@Override
+public boolean equals(Object obj) {
+Vector ob = (Vector) obj;
+return this.x == ob.x && this.y == ob.y && this.z == ob.z;
+}
+//returns the magnitude of the called vector.
+public double magnitude()
+{
+return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
+}
+//returns a unit vector in the direction of the called vector.
+public Vector unitVector()
+{
+double a = this.x/this.magnitude();
+double b = this.y/this.magnitude();
+double c = this.z/this.magnitude();
+return new Vector(a,b,c);
+}
+//adds 2 vectors and returns the new added vector.
+public static Vector sum(Vector a, Vector b)
+{
+if(a == null || b == null)
+return null;
+Vector ans = new Vector(a.x+b.x,a.y+b.y,a.z+b.z);
+return ans;
+}
+//returns a vector which is the scaled version of its parameter .
+public static Vector scale(Vector a, double val)
+{
+double x = a.x * val;
+double y = a.y * val;
+double z = a.z * val;
+return new Vector(x,y,z);
+}
+}

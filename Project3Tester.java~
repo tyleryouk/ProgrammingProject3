@@ -1,0 +1,47 @@
+import org.junit.*;
+import static org.junit.Assert.*;
+
+public class Project3Tester {
+
+  
+  /** Testing all methods in Point2D */
+  @Test
+  public void testPoint2D() {    
+    
+    Point2D pointNull;
+    Point2D pointA = new Point2D(0.0,0.0);
+    Point2D pointB = new Point2D(8.0,3.0);
+    
+    /** Testing getX()
+      * NOTE: We are using assertEquals(double expected, double actual, double delta)
+      * where double delta is the range of error of 0.1*/
+    assertEquals(0.0, pointA.getX(), 0.1); 
+    assertEquals(8.0, pointB.getX(), 0.1); 
+    /** Testing getY()*/
+    assertEquals(0.0, pointA.getY(), 0.1); 
+    assertEquals(3.0, pointB.getY(), 0.1); 
+    /** Testing toString()*/
+    assertEquals("(0.0,0.0)", pointA.toString()); 
+    assertEquals("(8.0,3.0)", pointB.toString()); 
+    
+  }
+  
+  @Test
+  public void testToString() {    
+    
+    Line2D line1 = new Line2D(new Point2D(0, 0), new Point2D(2,4)); // slope is 2, intercept is 0
+    Line2D line1x = new Line2D(new Point2D(0, 4), new Point2D(2,0)); //should intercept at x = 1
+    assertEquals("y = 2.0x + 0.00", line1.toString()); // slope is 2, intercept is 0
+    assertEquals("y = -2.0x + 4.00", line1x.toString()); // slope is -2, intercept is 4
+  }
+  
+  @Test
+  public void testIntersection() {    
+    
+    Line2D line1 = new Line2D(new Point2D(0, 0), new Point2D(2,4)); // same lines
+    Line2D line1x = new Line2D(new Point2D(0, 4), new Point2D(2,0)); //same lines
+    //System.out.println(Line2D.intersection(line1, line1x));
+    assertEquals(false, Line2D.intersection(line1, line1x)); // slope is 2, intercept is 0
+   
+  }
+} 
